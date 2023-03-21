@@ -4,6 +4,8 @@
 #####################################
 
 - name: Ensure OU is present & protected
+  debug:
+    msg: "{{ item.name }} and {{ item.path }}"
   community.windows.win_domain_ou:
     name: "{{ item.name }}"
     path: "{{ item.path }}"

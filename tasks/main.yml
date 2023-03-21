@@ -10,10 +10,7 @@
 #    state: present
 #    protected: true
 
-- name: set_fact
-  args:
-    userslist:
-      name: '{{ item.0.name }}'
-      path:  '{{ item.0.path }}'
-  with_subelements: 
-    - ous
+- name: Iterating over nested lists
+  debug:
+    msg: "{{ item[0] }} and {{ item[1] }}"
+  loop: "{{ server1.custom_mountpoints | product(snmp_mountpoints_extend) | list }}"

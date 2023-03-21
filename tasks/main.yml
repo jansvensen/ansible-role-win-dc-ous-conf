@@ -6,7 +6,6 @@
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
     name: "{{ item.name }}"
-    ou: "{{ item.name }}"
     path: "{{ item.path }}"
     state: present
     protected: true

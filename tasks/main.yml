@@ -3,11 +3,6 @@
 ### Create OUs
 #####################################
 
-- name: Write output
-  debug:
-    msg: "{{ item.name }} and {{ item.path }}"
-  with_items: "{{ ous }}"
-
 - name: Ensure OU is present & protected    
   community.windows.win_domain_ou:
     name: "{{ item.name }}"

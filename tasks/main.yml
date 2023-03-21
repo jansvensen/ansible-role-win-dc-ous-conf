@@ -10,7 +10,10 @@
 #    state: present
 #    protected: true
 
-- name: Iterating over nested lists
-  debug:
-    msg: "{{ item[0] }} in {{ item[1] }}"
-  loop: "{{ ou.name | ou.path | list }}"
+- name: set_fact
+  args:
+    userslist:
+      name: '{{ item.0.name }}'
+      path:  '{{ item.0.path }}'
+  with_subelements: 
+    - ous

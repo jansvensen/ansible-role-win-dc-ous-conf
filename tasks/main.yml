@@ -3,14 +3,10 @@
 ### Create OUs
 #####################################
 
-#- name: Ensure OU is present & protected
-#  community.windows.win_domain_ou:
-#    name: Objects
-#    path: "DC=dt,DC=democloud"
-#    state: present
-#    protected: true
-
-- name: Iterating over nested lists
-  debug:
-    msg: "{{ item.name }} --> {{ item.path }} "
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: {{ item.name }}
+    path: {{ item.path }}
+    state: present
+    protected: true
   with_items: "{{ ous }}"

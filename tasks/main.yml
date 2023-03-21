@@ -12,5 +12,5 @@
 
 - name: Iterating over nested lists
   debug:
-    msg: "{{ item[0] }} and"
-  loop: "{{ server1.custom_mountpoints | list }}"
+    msg: "{{ item[0] }} and {{ item[1] }} "
+  loop: "{{ server1.custom_mountpoints | server1.snmp_mountpoints_extends | list }}"

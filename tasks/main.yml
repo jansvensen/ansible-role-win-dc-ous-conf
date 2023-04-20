@@ -9,4 +9,4 @@
     path: "{{ item.path }}"
     state: present
     protected: true
-  with_items: "{{ ous }}"
+  with_items: "{{ dc_ou }}"

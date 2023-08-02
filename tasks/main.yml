@@ -4,7 +4,7 @@
 #####################################
 
 - name: Ensure OU is present & protected    
-  community.windows.win_domain_ou:
+  microsoft.ad.ou:
     name: "{{ item.name }}"
     path: "{{ item.path }}"
     state: present

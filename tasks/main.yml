@@ -8,5 +8,5 @@
     name: "{{ item.name }}"
     path: "{{ item.path }}"
     state: present
-    protected: true
+    protect_from_deletion: true
   with_items: "{{ dc_ou }}"

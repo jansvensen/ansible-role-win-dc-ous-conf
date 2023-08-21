@@ -1,12 +1,27 @@
 ---
 #####################################
-### Create OUs
+### Create static OUs
 #####################################
 
-- name: Ensure OU is present & protected    
+- name: Create static OUs
   microsoft.ad.ou:
     name: "{{ item.name }}"
     path: "{{ item.path }}"
     state: present
     protect_from_deletion: true
-  with_items: "{{ dc_ou }}"
+  with_items: "{{ dc_ous_static }}"
+
+#####################################
+### Create dynamic OUs
+#####################################
+
+- name: Create dynamic OUs  
+  microsoft.ad.ou:
+    name: "{{ item[0].name }}"
+    path: "{{ item[0].path }}"
+    state: present
+    protect_from_deletion: true
+  with_items: 
+  - "{{ dc_ous_dynamic }}"
+  - "{{ dc_domain_count }}"
+ 

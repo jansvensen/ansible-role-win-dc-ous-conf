@@ -16,7 +16,7 @@
 #####################################
 - name: Create more dynamic OUs 
   microsoft.ad.ou:
-    name: "{{ item.name | replace('##', 'banana') }}"
+    name: "{{ item | replace('ee', 'banana') }}"
     path: "DC=dt,DC=training"
     state: present
     protect_from_deletion: true

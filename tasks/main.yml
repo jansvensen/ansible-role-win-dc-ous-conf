@@ -17,11 +17,10 @@
 
 - name: Create dynamic OUs  
   microsoft.ad.ou:
-    name: "{{ item[0].name }}"
-    path: "{{ item[0].path }}"
+    name: "{{ item.0.name }}"
+    path: "{{ item.0.path | replace('##', item.1 ) }}"
     state: present
     protect_from_deletion: true
   with_items: 
   - "{{ dc_ous_dynamic }}"
-  - "{{ dc_domain_count }}"
- 
+  - "{{ range(1, dc_domain_count + 1, 1) | list }}"

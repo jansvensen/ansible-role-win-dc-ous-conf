@@ -28,6 +28,6 @@
     path: "{{ item.0.path | replace('##', item.1 ) }}"
     state: present
     protect_from_deletion: true
-  with_items: 
-  - "{{ dc_ous_dynamic }}"
-  - "{{ range(1, dc_domain_count + 1, 1) | list }}"
+  with_nested:
+    - "{{ dc_ous_dynamic }}"
+    - "{{ range(1, dc_domain_count + 1, 1) | list }}"

@@ -15,6 +15,15 @@
 ### Create dynamic OUs
 #####################################
 
+
+- name: dingledongel
+  ansible.builtin.debug:
+    msg: "Name: {{ item.0.name | replace('##', item.1 ) }} - Path: {{ item.0.path | replace('##', item.1 ) }}"
+  with_nested:
+    - "{{ dc_ous_dynamic }}"
+    - "{{ range(1, dc_domain_count + 1, 1) | list }}"
+
+
 - name: Create dynamic OUs  
   microsoft.ad.ou:
     name: "{{ item.0.name | replace('##', item.1 ) }}"

@@ -14,19 +14,11 @@
 #####################################
 ### Create dynamic OUs
 #####################################
-- name: Create more dynamic OUs 
-  microsoft.ad.ou:
-    name: "{{ item | replace('ee', 'banana') }}"
-    path: "DC=dt,DC=training"
-    state: present
-    protect_from_deletion: true
-  with_items:
-  - "{{ dc_ous_dynamic }}"
 
 - name: Create dynamic OUs 
   microsoft.ad.ou:
     name: "{{ item.1 | replace('ee', 'banana') }}"
-    path: "DC=dt,DC=training"
+    path: "OU=Objects,DC=dt,DC=training"
     state: present
     protect_from_deletion: true
   with_nested:

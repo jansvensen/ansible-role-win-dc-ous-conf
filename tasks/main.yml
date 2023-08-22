@@ -17,7 +17,7 @@
 - name: Create more dynamic OUs 
   microsoft.ad.ou:
     name: "lala"
-    path: "lolo"
+    path: "DC=lolo"
     state: present
     protect_from_deletion: true
 

@@ -16,10 +16,12 @@
 #####################################
 - name: Create more dynamic OUs 
   microsoft.ad.ou:
-    name: "lala"
+    name: "{{ item.name }}"
     path: "DC=dt,DC=training"
     state: present
     protect_from_deletion: true
+  with_items:
+  - "{{ dc_ous_dynamic }}"
 
 - name: Create dynamic OUs 
   microsoft.ad.ou:

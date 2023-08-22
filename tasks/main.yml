@@ -17,8 +17,8 @@
 
 - name: Create dynamic OUs 
   microsoft.ad.ou:
-    name: "{{ item.0 | replace('ee', 'banana') }}"
-    path: "OU=Objects,DC=dt,DC=training"
+    name: "{{ item.0.name | replace('##', 'banana') }}"
+    path: "{{ item.0.path | replace('##', 'banana') }}"
     state: present
     protect_from_deletion: true
   with_nested:

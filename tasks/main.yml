@@ -24,4 +24,3 @@
   with_nested:
   - "{{ dc_ous_dynamic }}"
   - "{{ range(1, dc_domain_count + 1, 1) | list }}"
-

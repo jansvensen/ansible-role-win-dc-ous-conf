@@ -1,6 +1,0 @@
----
-# vars file for ansible-role-win-dc-ous-conf
-
-dc_ous_static: A static list of OUs.
-dc_ous_dynamic: A dynamic list of OUs.
-dc_domain_count: The number of environments to be created. Relates to "dc_ous_dynamic".
